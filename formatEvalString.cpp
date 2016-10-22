@@ -37,7 +37,7 @@ void formatEvalString::format()
 	char ch;
 	while ((ch = charList[i]) != '\0')//遍历整个表达式字符数组；
 	{
-		//如果是数字，按顺序把字符转换成double型存在charlist中,标志位记为0；
+		//如果是数字，按顺序把字符转换成double型存在evallist中,标志位记为0；
 		if (ch<= '9' && ch >= '0' || ch == '.')
 		{
 			string s;
