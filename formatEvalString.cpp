@@ -35,14 +35,15 @@ void formatEvalString::format()
 	int i = 0;
 	int j = 0;
 	char ch;
+	string s;
 	while ((ch = charList[i]) != '\0')//遍历整个表达式字符数组；
 	{
 		//如果是数字，按顺序把字符转换成double型存在evallist中,标志位记为0；
-		if (ch<= '9' && ch >= '0' || ch == '.')
+		if (ch <= '9' && ch >= '0' || ch == '.')
 		{
-			string s;
 			s.append(1, ch);
-			if (!(charList[i + 1] <= '9' && charList[i + 1] >= '0'))
+			if (!(charList[i + 1] <= '9' && charList[i + 1] >= '0') && !(charList[i + 1
+		] == '.'))
 			{
 				
 				evalList[0][j] = 0;
@@ -84,7 +85,7 @@ void formatEvalString::format()
 	evalList[0][j] = 4;
 }
 
-double formatEvalString::stringToNumber(string & str)
+double formatEvalString::stringToNumber(string str)
 {
 	istringstream iss(str);
 	double num;

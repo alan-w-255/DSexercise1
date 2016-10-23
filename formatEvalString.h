@@ -23,7 +23,7 @@ private:
 	const char* charList;
 	int encodeOpt(char); // 
 	void format();
-	double charListToNUM(char,&jdouble);
+	double stringToNumber(string);
 };
 
 
