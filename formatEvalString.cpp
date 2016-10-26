@@ -54,7 +54,8 @@ void formatEvalString::format()
 			}
 		}
 		//如果是负数
-		else if (ch == '-' && charList[i + 1] <= '9' && charList[i + 1] >= '0')
+		else if (ch == '-' && charList[i + 1] <= '9' && charList[i + 1] >= '0' && 
+			!(charList[i - 1] <= '9' && charList[i - 1] >= '0') )
 		{
 			flag = 1;
 			s.append(1, ch);
@@ -70,7 +71,7 @@ void formatEvalString::format()
 			}
 		}
 		//如果是+ - * / ^, 编码为 1 2 3 4 5 标志位记为 1；
-		else if (ch == '+' || (ch == '-' && !(charList[i + 1] <= '9' && charList[i + 1] >= '0'))
+		else if (ch == '+' || (ch == '-' && (charList[i - 1] <= '9' && charList[i - 1] >= '0'))
 			|| ch == '*'
 			|| ch == '/'  || ch == '^')
 		{
