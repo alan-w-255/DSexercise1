@@ -1,0 +1,4 @@
+﻿  formatEvalString.cpp
+g:\github\dsexercise1\formatevalstring.cpp(31): warning C4715: 'formatEvalString::encodeOpt': not all control paths return a value
+  DSexercise1.vcxproj -> G:\GitHub\DSexercise1\DSexercise1\Debug\DSexercise1.exe
+  DSexercise1.vcxproj -> G:\GitHub\DSexercise1\DSexercise1\Debug\DSexercise1.pdb (Full PDB)

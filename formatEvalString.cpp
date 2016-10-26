@@ -36,10 +36,11 @@ void formatEvalString::format()
 	int j = 0;
 	char ch;
 	string s;
+	int flag = 0;
 	while ((ch = charList[i]) != '\0')//遍历整个表达式字符数组；
 	{
 		//如果是数字，按顺序把字符转换成double型存在evallist中,标志位记为0；
-		if (ch <= '9' && ch >= '0' || ch == '.')
+		if (ch <= '9' && ch >= '0' || ch == '.' && flag != 1)
 		{
 			s.append(1, ch);
 			if (!(charList[i + 1] <= '9' && charList[i + 1] >= '0') && !(charList[i + 1
@@ -52,8 +53,25 @@ void formatEvalString::format()
 				s.clear();
 			}
 		}
+		//如果是负数
+		else if (ch == '-' && charList[i + 1] <= '9' && charList[i + 1] >= '0')
+		{
+			flag = 1;
+			s.append(1, ch);
+			if (!(charList[i + 1] <= '9' && charList[i + 1] >= '0') && !(charList[i + 1
+		] == '.'))
+			{
+				
+				evalList[0][j] = 0;
+				evalList[1][j] = stringToNumber(s);
+				j++;
+				s.clear();
+				flag = 0;
+			}
+		}
 		//如果是+ - * / ^, 编码为 1 2 3 4 5 标志位记为 1；
-		else if (ch == '+' || ch == '-' || ch == '*'
+		else if (ch == '+' || (ch == '-' && !(charList[i + 1] <= '9' && charList[i + 1] >= '0'))
+			|| ch == '*'
 			|| ch == '/'  || ch == '^')
 		{
 			evalList[0][j] = 1;
@@ -78,7 +96,6 @@ void formatEvalString::format()
 		else
 		{
 			throw("error: unknow syntax");
-			exit(1);
 		}
 		i++;
 	}
